@@ -3,6 +3,7 @@ import Welcome from './Welcome';
 import AlertClock from './AlertClock';
 import Counter from './Counter';
 import Clock from './Clock';
+import MouseClicker from './MouseClicker';
 
 function App() {
   const handleButtonClick = () => {
@@ -15,6 +16,7 @@ return (
       <AlertClock onClick={handleButtonClick} />
       <Counter initValue={0} incremento={1}/>
       <Clock />
+      <MouseClicker />
     </div>
   );
 }
