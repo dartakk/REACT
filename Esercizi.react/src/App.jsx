@@ -2,6 +2,7 @@ import React from 'react';
 import Welcome from './Welcome';
 import AlertClock from './AlertClock';
 import Counter from './Counter';
+import Clock from './Clock';
 
 function App() {
   const handleButtonClick = () => {
@@ -13,6 +14,7 @@ return (
       <Welcome name="Francesco" age={30} />
       <AlertClock onClick={handleButtonClick} />
       <Counter initValue={0} incremento={1}/>
+      <Clock />
     </div>
   );
 }

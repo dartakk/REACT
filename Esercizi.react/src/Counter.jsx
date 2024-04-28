@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CounterDisplay from './CounterDisplay';
 
-function Counter({ initValue, incremento}) {
+function Counter({ initValue, incremento }) {
   const [counter, setCounter] = useState(initValue);
 
   const incrementCounter = () => {
@@ -15,6 +15,11 @@ function Counter({ initValue, incremento}) {
   const resetCounter = () => {
     setCounter(initValue)
   }
+
+  useEffect(() => {
+    console.log("Current counter value:", counter);
+  }, [counter]);
+
   return (
     <div>
       <h2>{counter}</h2>
@@ -27,5 +32,3 @@ function Counter({ initValue, incremento}) {
 }
 
 export default Counter;
-
-/*La funzione setter riceve una funziona come parametro e assicura l'accesso al valore piu recente dello state */
