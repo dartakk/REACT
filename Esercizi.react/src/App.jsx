@@ -1,9 +1,9 @@
 import React from 'react';
-import Welcome from './Welcome';
-import AlertClock from './AlertClock';
-import Counter from './Counter';
-import Clock from './Clock';
-import MouseClicker from './MouseClicker';
+import Welcome from './ConditionalRendering1/Welcome';
+import AlertClock from './Events/AlertClock';
+import Counter from './State2/Counter';
+import Clock from './UseEffect2/Clock';
+import MouseClicker from './HandlingEvents2/MouseClicker';
 
 function App() {
   const handleButtonClick = () => {
