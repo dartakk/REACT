@@ -11,6 +11,11 @@ function App() {
 const currentTime = new Date().toLocaleTimeString();
     alert('Current time is: ' + currentTime);
 };
+
+const handleLogin = (loginData) => {
+  console.log(loginData);
+
+};
 return (
     <div className="App">
       <Welcome name="Francesco" age={30} />
@@ -19,7 +24,7 @@ return (
       <Clock />
       <MouseClicker />
       <InteractiveWelcome/>
-      <LoginComponent/>
+      <LoginComponent onLogin={handleLogin}/>
     </div>
   );
 }
