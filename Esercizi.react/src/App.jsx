@@ -1,9 +1,9 @@
-import React from 'react';
 import Welcome from './ConditionalRendering1/Welcome';
 import AlertClock from './Events/AlertClock';
 import Counter from './State2/Counter';
 import Clock from './UseEffect2/Clock';
 import MouseClicker from './HandlingEvents2/MouseClicker';
+import { MyForm } from './MyForm';
 
 function App() {
   const handleButtonClick = () => {
@@ -17,6 +17,7 @@ return (
       <Counter initValue={0} incremento={1}/>
       <Clock />
       <MouseClicker />
+      <MyForm/>
     </div>
   );
 }

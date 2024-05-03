@@ -1,5 +1,3 @@
-import React from 'react';
-
 function MouseClicker() {
   const handleClick = (event) => {
     console.log("Button number:", event.target.name);

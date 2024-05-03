@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Age({ age }) {
   return (
     <div>
