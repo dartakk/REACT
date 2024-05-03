@@ -3,7 +3,8 @@ import AlertClock from './Events/AlertClock';
 import Counter from './State2/Counter';
 import Clock from './UseEffect2/Clock';
 import MouseClicker from './HandlingEvents2/MouseClicker';
-import { MyForm } from './MyForm';
+import { InteractiveWelcome } from './ControlledForms2/InteractiveWelcome';
+import { LoginComponent } from './ControlledForms2/Login';
 
 function App() {
   const handleButtonClick = () => {
@@ -17,7 +18,8 @@ return (
       <Counter initValue={0} incremento={1}/>
       <Clock />
       <MouseClicker />
-      <MyForm/>
+      <InteractiveWelcome/>
+      <LoginComponent/>
     </div>
   );
 }
