@@ -5,6 +5,7 @@ import Clock from './UseEffect2/Clock';
 import MouseClicker from './HandlingEvents2/MouseClicker';
 import { InteractiveWelcome } from './ControlledForms2/InteractiveWelcome';
 import { LoginComponent } from './ControlledForms2/Login';
+import { UncontrolledLogin } from './UncontrolledForms/UncontrolledLogin';
 
 function App() {
   const handleButtonClick = () => {
@@ -25,6 +26,7 @@ return (
       <MouseClicker />
       <InteractiveWelcome/>
       <LoginComponent onLogin={handleLogin}/>
+      <UncontrolledLogin/>
     </div>
   );
 }
