@@ -8,6 +8,9 @@ import { LoginComponent } from './ControlledForms2/Login';
 import { UncontrolledLogin } from './UncontrolledForms/UncontrolledLogin';
 import { FocusableInput } from './Ref/FocusableInput';
 import { ComponentWithEffect } from './Ref/ComponentWithEffect';
+import Color from './RenderingList/Color';
+import { Colors } from './RenderingList/Colors';
+
 
 function App() {
   const handleButtonClick = () => {
@@ -31,6 +34,12 @@ return (
       <UncontrolledLogin/>
       <FocusableInput/>
       <ComponentWithEffect/>
+      <Color color={{ id: 1, name: 'Yellow' }} />
+      <Colors colors={[
+        { id: 1, name: 'Red' },
+        { id: 2, name: 'Blue' },
+        { id: 3, name: 'Green' }
+        ]} />
     </div>
   );
 }
