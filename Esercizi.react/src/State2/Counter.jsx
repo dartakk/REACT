@@ -1,24 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import CounterDisplay from './CounterDisplay';
 
 function Counter({ initValue, incremento }) {
   const [counter, setCounter] = useState(initValue);
+  const prevCounterRef = useRef(initValue);
+  const [aRef, setARef] = useState("");
+
+  const updateARef = (newCounter) => {
+    if (newCounter > prevCounterRef.current) {
+      setARef("su");
+    } else if (newCounter < prevCounterRef.current) {
+      setARef("giù");
+    }
+    prevCounterRef.current = newCounter;
+  };
 
   const incrementCounter = () => {
     setCounter(prev => prev + incremento);
   };
 
   const decrementCounter = () => {
-    setCounter(prev => prev - incremento)
-  }
+    setCounter(prev => prev - incremento);
+  };
 
   const resetCounter = () => {
-    setCounter(initValue)
-  }
+    setCounter(initValue);
+  };
 
   useEffect(() => {
-    console.log("Current counter value:", counter);
-  }, [counter]);
+    updateARef(counter);
+    if (aRef !== prevCounterRef.current) {
+      console.log("Current direction:", aRef);
+    }
+  }, [counter, aRef]);
 
   return (
     <div>

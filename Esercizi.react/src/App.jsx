@@ -6,6 +6,8 @@ import MouseClicker from './HandlingEvents2/MouseClicker';
 import { InteractiveWelcome } from './ControlledForms2/InteractiveWelcome';
 import { LoginComponent } from './ControlledForms2/Login';
 import { UncontrolledLogin } from './UncontrolledForms/UncontrolledLogin';
+import { FocusableInput } from './Ref/FocusableInput';
+import { ComponentWithEffect } from './Ref/ComponentWithEffect';
 
 function App() {
   const handleButtonClick = () => {
@@ -27,6 +29,8 @@ return (
       <InteractiveWelcome/>
       <LoginComponent onLogin={handleLogin}/>
       <UncontrolledLogin/>
+      <FocusableInput/>
+      <ComponentWithEffect/>
     </div>
   );
 }
