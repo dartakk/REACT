@@ -10,6 +10,7 @@ import { FocusableInput } from './Ref/FocusableInput';
 import { ComponentWithEffect } from './Ref/ComponentWithEffect';
 import Color from './RenderingList/Color';
 import { Colors } from './RenderingList/Colors';
+import { TodoList } from './RenderingList2/TodoList';
 
 
 function App() {
@@ -40,6 +41,7 @@ return (
         { id: 2, name: 'Blue' },
         { id: 3, name: 'Green' }
         ]} />
+      <TodoList/>
     </div>
   );
 }
