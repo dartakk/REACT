@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GithubUser from './GithubUser';
 
 function GithubUsers() {
@@ -16,17 +16,27 @@ function GithubUsers() {
     setUsername(event.target.value);
   };
 
-  const addUser = (username) => {
-    fetch(`https://api.github.com/users/${username}`)
-      .then(response => response.json())
-      .then(data => {
-        setUsers(prevUsers => ({
-          ...prevUsers,
-          [username]: data
-        }));
-      })
-      .catch(error => console.error('Error fetching user data:', error));
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (submittedUsername) {
+        try {
+          const response = await fetch(`https://api.github.com/users/${submittedUsername}`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+          }
+          const userData = await response.json();
+          setUsers(prevUsers => ({
+            ...prevUsers,
+            [submittedUsername]: userData
+          }));
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [submittedUsername]);
 
   return (
     <div>
@@ -37,7 +47,6 @@ function GithubUsers() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      {submittedUsername && addUser(submittedUsername)}
       <h2>Risultato Utenti Github:</h2>
       <ul>
         {Object.keys(users).map(username => (
