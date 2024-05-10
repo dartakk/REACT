@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './Todolist.module.css';
 
 export function TodoList() {
   const [todos, setTodos] = useState([
@@ -31,11 +32,11 @@ export function TodoList() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <input type="text" value={inputValue} onChange={handleInputChange} placeholder="Add a new todo" />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <button onClick={handleResetTodos}>Reset</button>
-      <ul>
+      <button className={styles.button} onClick={handleAddTodo}>Add Todo</button>
+      <button className={styles.button} onClick={handleResetTodos}>Reset</button>
+      <ul className={styles.list}>
         {todos.map((todo, index) => (
           <li key={index}>
             {todo}

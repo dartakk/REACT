@@ -11,7 +11,7 @@ import { ComponentWithEffect } from './Ref/ComponentWithEffect';
 import Color from './RenderingList/Color';
 import { Colors } from './RenderingList/Colors';
 import { TodoList } from './RenderingList2/TodoList';
-
+import './UncontrolledForms/styles.css';
 
 function App() {
   const handleButtonClick = () => {
