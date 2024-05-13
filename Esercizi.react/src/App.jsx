@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import { LanguageContext } from './UseEffect2/LanguageContext';
 import Welcome from './ConditionalRendering1/Welcome';
 import AlertClock from './Events/AlertClock';
 import Counter from './State2/Counter';
@@ -23,12 +25,24 @@ const handleLogin = (loginData) => {
   console.log(loginData);
 
 };
+
+const [language, setLanguage] = useState('en');
+const handleLanguageChange = (e) => {
+  setLanguage(e.target.value);
+};
+
 return (
     <div className="App">
       <Welcome name="Francesco" age={30} />
       <AlertClock onClick={handleButtonClick} />
       <Counter initValue={0} incremento={1}/>
-      <Clock />
+      <select value={language} onChange={handleLanguageChange}>
+        <option value="en">English</option>
+        <option value="it">Italiano</option>
+      </select>
+      <LanguageContext.Provider value={language}>
+        <Clock />
+      </LanguageContext.Provider>
       <MouseClicker />
       <InteractiveWelcome/>
       <LoginComponent onLogin={handleLogin}/>
