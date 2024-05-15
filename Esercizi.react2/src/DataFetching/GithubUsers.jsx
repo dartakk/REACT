@@ -4,7 +4,8 @@ import GithubUser from './GithubUser';
 function GithubUsers() {
   const [username, setUsername] = useState('');
   const [submittedUsername, setSubmittedUsername] = useState('');
-  const [users, setUsers] = useState({});
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,15 +23,15 @@ function GithubUsers() {
         try {
           const response = await fetch(`https://api.github.com/users/${submittedUsername}`);
           if (!response.ok) {
-            throw new Error('Failed to fetch user data');
+            throw new Error('Fetch fallito');
           }
-          const userData = await response.json();
-          setUsers(prevUsers => ({
-            ...prevUsers,
-            [submittedUsername]: userData
-          }));
+          const data = await response.json();
+          setUserData(data);
+          setError(null);
         } catch (error) {
-          console.error('Error fetching user data:', error);
+          console.error(error.message);
+          setUserData(null);
+          setError('Utente non trovato');
         }
       }
     };
@@ -48,13 +49,11 @@ function GithubUsers() {
         <button type="submit">Submit</button>
       </form>
       <h2>Risultato Utenti Github:</h2>
-      <ul>
-        {Object.keys(users).map(username => (
-          <li key={username}>
-            <GithubUser username={username} />
-          </li>
-        ))}
-      </ul>
+      {error ? (
+        <p>{error}</p>
+      ) : (
+        userData && <GithubUser userData={userData} />
+      )}
     </div>
   );
 }
