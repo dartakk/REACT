@@ -2,7 +2,7 @@ import React from 'react';
 
 function GithubUser({ userData }) {
   if (!userData) {
-    return <div>Qui sotto per cercare</div>;
+    return <div>Github Username</div>;
   }
 
   return (
