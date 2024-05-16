@@ -8,7 +8,7 @@ import FilteredList from './UseMemo/FilteredList';
 import ShowGithubUser from './ReactRouter-3/ShowGithubUser';
 import Counter from './ReactRouter-3/Counter';
 import Welcome from './ReactRouter-3/Welcome';
-
+import GithubUserList from './ReactRouter-6/GithubUserList';
 
 function App() {
   const { location, error, loading, getCurrentLocation } = useCurrentLocation();
@@ -31,7 +31,7 @@ function App() {
               <Link to="/counter">Counter</Link>
             </li>
             <li>
-              <Link to="/users/dartakk">Github User</Link>
+              <Link to="/users">GitHub Users</Link>
             </li>
           </ul>
         </nav>
@@ -52,9 +52,9 @@ function App() {
               <Counter/>
             </>
           } />
-          <Route path="/users/:username" element={<ShowGithubUser />} />
           <Route path="/welcome" element={<Welcome name="Francesco" />} />
           <Route path="/counter" element={<Counter initValue={0} incremento={1} />} />
+          <Route path="/users/*" element={<GithubUserList />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
