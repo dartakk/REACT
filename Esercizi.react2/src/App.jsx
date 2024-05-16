@@ -24,6 +24,9 @@ function App() {
       <div>
         <nav>
           <ul>
+          <li>
+              <Link to="/">Home</Link>
+            </li>
             <li>
               <Link to="/welcome">Welcome</Link>
             </li>
@@ -55,12 +58,22 @@ function App() {
           <Route path="/welcome" element={<Welcome name="Francesco" />} />
           <Route path="/counter" element={<Counter initValue={0} incremento={1} />} />
           <Route path="/users/*" element={<GithubUserList />} />
+          <Route path="/users" element={<Message />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
   );
 }
+
+const Message = () => {
+  return (
+    <>
+      <h2>Add a user and select it</h2>
+      <GithubUserList />
+    </>
+  );
+};
 
 const NotFound = () => {
   return <h1>404 - Not Found</h1>;
