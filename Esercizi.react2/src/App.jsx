@@ -55,10 +55,15 @@ function App() {
           <Route path="/users/:username" element={<ShowGithubUser />} />
           <Route path="/welcome" element={<Welcome name="Francesco" />} />
           <Route path="/counter" element={<Counter initValue={0} incremento={1} />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
   );
 }
+
+const NotFound = () => {
+  return <h1>404 - Not Found</h1>;
+};
 
 export default App;
