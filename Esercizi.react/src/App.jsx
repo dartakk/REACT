@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageContext } from './UseEffect2/LanguageContext';
 import Welcome from './ConditionalRendering1/Welcome';
 import AlertClock from './Events/AlertClock';
@@ -17,46 +18,50 @@ import './UncontrolledForms/styles.css';
 
 function App() {
   const handleButtonClick = () => {
-const currentTime = new Date().toLocaleTimeString();
+    const currentTime = new Date().toLocaleTimeString();
     alert('Current time is: ' + currentTime);
-};
+  };
 
-const handleLogin = (loginData) => {
-  console.log(loginData);
+  const handleLogin = (loginData) => {
+    console.log(loginData);
+  };
 
-};
+  const [language, setLanguage] = useState('en');
+  const handleLanguageChange = (e) => {
+    setLanguage(e.target.value);
+  };
 
-const [language, setLanguage] = useState('en');
-const handleLanguageChange = (e) => {
-  setLanguage(e.target.value);
-};
-
-return (
-    <div className="App">
-      <Welcome name="Francesco" age={30} />
-      <AlertClock onClick={handleButtonClick} />
-      <Counter initValue={0} incremento={1}/>
-      <select value={language} onChange={handleLanguageChange}>
-        <option value="en">English</option>
-        <option value="it">Italiano</option>
-      </select>
-      <LanguageContext.Provider value={language}>
-        <Clock />
-      </LanguageContext.Provider>
-      <MouseClicker />
-      <InteractiveWelcome/>
-      <LoginComponent onLogin={handleLogin}/>
-      <UncontrolledLogin/>
-      <FocusableInput/>
-      <ComponentWithEffect/>
-      <Color color={{ id: 1, name: 'Yellow' }} />
-      <Colors colors={[
-        { id: 1, name: 'Red' },
-        { id: 2, name: 'Blue' },
-        { id: 3, name: 'Green' }
-        ]} />
-      <TodoList/>
-    </div>
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <select value={language} onChange={handleLanguageChange}>
+          <option value="en">English</option>
+          <option value="it">Italiano</option>
+        </select>
+        <LanguageContext.Provider value={language}>
+          <Clock />
+        </LanguageContext.Provider>
+        <Routes>
+          <Route path="/welcome" element={<Welcome name="Francesco" />} />
+          <Route path="/counter" element={<Counter initValue={0} incremento={1} />} />
+        </Routes>
+        <AlertClock onClick={handleButtonClick} />
+        <Counter initValue={0} incremento={1}/>
+        <MouseClicker />
+        <InteractiveWelcome/>
+        <LoginComponent onLogin={handleLogin}/>
+        <UncontrolledLogin/>
+        <FocusableInput/>
+        <ComponentWithEffect/>
+        <Color color={{ id: 1, name: 'Yellow' }} />
+        <Colors colors={[
+          { id: 1, name: 'Red' },
+          { id: 2, name: 'Blue' },
+          { id: 3, name: 'Green' }
+          ]} />
+        <TodoList/>
+      </div>
+    </BrowserRouter>
   );
 }
 
